@@ -6,11 +6,12 @@ const toRead = () => {
     return 'SELECT * FROM entregadores';
 }
 
+const toLogin = (model) => {
+    return `SELECT * FROM entregadores WHERE email = '${model.email}' and senha = '${model.senha}'`;
+}
+
 const toUpdate = (model) => {
-    return `UPDATE entregadores SET 
-    nome = '${model.nome}', 
-    senha = '${model.senha}', 
-    veiculo = '${model.veiculo}' 
+    return `UPDATE entregadores SET senha = '${model.senha}'
     WHERE id_entregador = '${model.id_entregador}'`;
 }
 
@@ -21,6 +22,7 @@ const toDelete = (model) => {
 module.exports = {
     toCreate,
     toRead,
+    toLogin,
     toUpdate,
     toDelete
 }

@@ -1,15 +1,17 @@
 const toCreate = (model) => {
-    return `INSERT INTO pedidos VALUES (default,'${model.cliente}','${model.endereco}', '${model.produto}', curdate(), curtime(), '${model.hora_fim}')`;
+    return `INSERT INTO pedidos VALUES (default,'${model.cliente}','${model.endereco}', '${model.produto}', curdate(), curtime(), '${model.hora_entrega}', '${model.hora_fim}', '${model.id_entregador}')`;
 }
 
 const toRead = () => {
     return 'SELECT * FROM pedidos';
 }
 
-const toUpdate = (model) => {
-    return `UPDATE pedidos SET 
-    produto = '${model.produto}'
-    WHERE id_pedido = '${model.id_pedido}'`;
+const toUpdateEntrega = (model) => {
+    return `UPDATE pedidos SET hora_entrega = '${model.hora_entrega}' WHERE id_pedido = '${model.id_pedido}'`;
+}
+
+const toUpdateFim = (model) => {
+    return `UPDATE pedidos SET hora_fim = '${model.hora_fim}' WHERE id_pedido = '${model.id_pedido}'`;
 }
 
 const toDelete = (model) => {
@@ -19,6 +21,7 @@ const toDelete = (model) => {
 module.exports = {
     toCreate,
     toRead,
-    toUpdate,
+    toUpdateEntrega,
+    toUpdateFim,
     toDelete
 }

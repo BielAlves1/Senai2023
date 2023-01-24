@@ -22,8 +22,20 @@ const cadastrarPedido = (req, res) => {
     })
 }
 
-const alterarPedido = (req, res) => {
-    con.query(Pedido.toUpdate(req.body), (err, result) => {
+const alterarPedidoHE = (req, res) => {
+    con.query(Pedido.toUpdateEntrega(req.body), (err, result) => {
+        if (err == null)
+            if (result.affectedRows > 0)
+                res.status(200).end();
+            else
+                res.status(404).end();
+        else
+            res.status(500).json(err).end();
+    });
+}
+
+const alterarPedidoHF = (req, res) => {
+    con.query(Pedido.toUpdateFim(req.body), (err, result) => {
         if (err == null)
             if (result.affectedRows > 0)
                 res.status(200).end();
@@ -49,6 +61,7 @@ const excluirPedido = (req, res) => {
 module.exports = {
     listarPedidos,
     cadastrarPedido,
-    alterarPedido,
+    alterarPedidoHE,
+    alterarPedidoHF,
     excluirPedido
 }

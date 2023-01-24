@@ -17,7 +17,7 @@ CREATE TABLE pedidos(
     produto VARCHAR(30) NOT NULL,
     data DATE NOT NULL,
     hora_pedido TIME NOT NULL,
-    hora_entregue TIME,
+    hora_entrega TIME,
     hora_fim TIME,
     id_entregador INTEGER NOT NULL,
     foreign key (id_entregador) references entregadores(id_entregador)
