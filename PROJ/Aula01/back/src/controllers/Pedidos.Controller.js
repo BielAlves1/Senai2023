@@ -12,6 +12,16 @@ const listarPedidos = (req, res) => {
     })
 }
 
+const listarPedidosExec = (req, res) => {
+    con.query(Pedido.toReadExec(), (err, result) => {
+        if (err == null) {
+            res.status(200).json(result).end();
+        }else{
+            res.status(400).json(err).end();
+        }
+    })
+}
+
 const cadastrarPedido = (req, res) => {
     con.query(Pedido.toCreate(req.body), (err, result) => {
         if (err == null) {
@@ -60,6 +70,7 @@ const excluirPedido = (req, res) => {
 
 module.exports = {
     listarPedidos,
+    listarPedidosExec,
     cadastrarPedido,
     alterarPedidoHE,
     alterarPedidoHF,

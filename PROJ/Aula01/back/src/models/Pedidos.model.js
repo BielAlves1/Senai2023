@@ -6,6 +6,10 @@ const toRead = () => {
     return 'SELECT * FROM pedidos';
 }
 
+const toReadExec = () => {
+    return 'SELECT * FROM vw_pedidos_execucao';
+}
+
 const toUpdateEntrega = (model) => {
     return `UPDATE pedidos SET hora_entrega = '${model.hora_entrega}' WHERE id_pedido = '${model.id_pedido}'`;
 }
@@ -21,6 +25,7 @@ const toDelete = (model) => {
 module.exports = {
     toCreate,
     toRead,
+    toReadExec,
     toUpdateEntrega,
     toUpdateFim,
     toDelete
