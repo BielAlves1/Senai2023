@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="home.css">
     <title>Home</title>
 </head>
-<body>
+<body onLoad="loadPedidos()">
     <header>
         <p>Gestão de Entregas</p>
     </header>
@@ -28,24 +28,31 @@
             <button id="btnCad">Gerar Pedido</button>
         </div> 
         <div class="content">
-            <div class="pedidoExec">
-                <p id="id"></p>
-                <p id="cliente"></p>
-                <p id="produto"></p>
-                <p id="endereco"></p>
-                <p id="data"></p>
-                <p id="horaPedido"></p>
+            <div class="execucao">
+                <div class="pedidoExec model">
+                    <p id="id">Id: </p>
+                    <p id="cliente">Cliente: </p>
+                    <p id="produto">Produto: </p>
+                    <p id="endereco">Endereço: </p>
+                    <p id="data">Data: </p>
+                    <p id="horaPedido">Horário: </p>
+                    <button></button>
+                </div>
             </div>
-            <div class="pedidoEntrega">
-                <p id="id2"></p>
-                <p id="cliente2"></p>
-                <p id="produto2"></p>
-                <p id="endereco2"></p>
-                <p id="data2"></p>
-                <p id="horaPedido2"></p>
-                <p id="horaEntrega"></p>
-            </div>
+            <div class="entrega">
+                <div class="pedidoEntrega model">
+                    <p id="id">Id: </p>
+                    <p id="cliente">Cliente: </p>
+                    <p id="produto">Produto: </p>
+                    <p id="endereco">Endereço: </p>
+                    <p id="data">Data: </p>
+                    <p id="horaPedido">Horário: </p>
+                    <p id="horaEntrega">Entrega: </p>
+                    <button></button>
+                </div>
+            </div>     
         </div>
     </div>
 </body>
+<script src="home.js"></script>
 </html>

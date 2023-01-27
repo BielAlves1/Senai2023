@@ -28,7 +28,9 @@ describe pedidos;
 
 show tables;
 
-LOAD DATA INFILE 'D:/Gabriel Alves/Senai2023/PROJ/Aula01/docs/dados/entregadores.csv'
+LOAD DATA INFILE 'D:/Senai2023/PROJ/Aula01/docs/dados/entregadores.csv'
+-- 'D:/Gabriel Alves/Senai2023/PROJ/Aula01/docs/dados/entregadores.csv' <-- sala
+-- 'D:/Senai2023/PROJ/Aula01/docs/dados/entregadores.csv' <-- casa
 INTO TABLE entregadores
 FIELDS TERMINATED BY ';'
 ENCLOSED BY '"'
@@ -37,7 +39,7 @@ IGNORE 1 ROWS;
 
 select * from entregadores;
 
-LOAD DATA INFILE 'D:/Gabriel Alves/Senai2023/PROJ/Aula01/docs/dados/pedidos.csv'
+LOAD DATA INFILE 'D:/Senai2023/PROJ/Aula01/docs/dados/pedidos.csv'
 INTO TABLE pedidos
 FIELDS TERMINATED BY ';'
 ENCLOSED BY '"'

@@ -73,9 +73,21 @@ container{
     box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.25);
 }
 
+#btnCad:hover {
+    background-color: #004c82;
+    color: #ffffff;
+}
+
 .content{
     margin-top: 2%;
     background-color: #ffffff;
     margin-left: 0.5%;
     width: 99%;
+    display: flex;
+    justify-content: center;
+}
+
+.model{
+    display: none;
+    visibility: hidden;
 }
