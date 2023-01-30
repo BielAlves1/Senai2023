@@ -47,17 +47,3 @@ LINES TERMINATED BY '\r\n'
 IGNORE 1 ROWS;
 
 select * from pedidos;
-
-create view vw_pedidos_execucao as
-select id_pedido, cliente, endereco, produto, data, hora_pedido, hora_entrega, hora_fim, id_entregador
-from pedidos
-where hora_fim is null AND hora_entrega is null;
-
-select * from vw_pedidos_execucao;
-
-create view vw_pedidos_entrega as
-select id_pedido, cliente, endereco, produto, data, hora_pedido, hora_entrega, hora_fim, id_entregador
-from pedidos
-where hora_fim is null AND hora_entrega is not null;
-
-select * from vw_pedidos_entrega;

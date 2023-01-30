@@ -25,30 +25,36 @@
                     <input class="inputzin" id="produto" type="text">
                 </div>
             </div>
-            <button id="btnCad">Gerar Pedido</button>
+            <button id="btnCad" onClick="criarPedido()">Gerar Pedido</button>
         </div> 
         <div class="content">
             <div class="execucao">
+                <h3>Em Execução</h3>
                 <div class="pedidoExec model">
-                    <p id="id">Id: </p>
-                    <p id="cliente">Cliente: </p>
-                    <p id="produto">Produto: </p>
-                    <p id="endereco">Endereço: </p>
-                    <p id="data">Data: </p>
-                    <p id="horaPedido">Horário: </p>
-                    <button></button>
+                    <div class="separa">
+                        <p id="id">Id: </p>
+                        <p id="cliente">Cliente: </p>
+                        <p id="produto">Produto: </p>
+                        <p id="endereco">Endereço: </p>
+                        <p id="data">Data: </p>
+                        <p id="horaPedido">Horário: </p>
+                    </div>
+                    <button class="btEnviar" onClick="enviarEntrega(this)"><img src="../../assets/delivery.png"></button>
                 </div>
             </div>
             <div class="entrega">
+                <h3>A Caminho</h3>
                 <div class="pedidoEntrega model">
-                    <p id="id">Id: </p>
-                    <p id="cliente">Cliente: </p>
-                    <p id="produto">Produto: </p>
-                    <p id="endereco">Endereço: </p>
-                    <p id="data">Data: </p>
-                    <p id="horaPedido">Horário: </p>
-                    <p id="horaEntrega">Entrega: </p>
-                    <button></button>
+                    <div class="separa">
+                        <p id="id">Id: </p>
+                        <p id="cliente">Cliente: </p>
+                        <p id="produto">Produto: </p>
+                        <p id="endereco">Endereço: </p>
+                        <p id="data">Data: </p>
+                        <p id="horaPedido">Horário: </p>
+                        <p id="horaEntrega">Entrega: </p>
+                    </div>
+                    <button class="btEntrega" onClick="finalizarEntrega(this)"><img src="../../assets/check.png"></button>
                 </div>
             </div>     
         </div>

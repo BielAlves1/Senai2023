@@ -42,14 +42,13 @@ container{
 }
 
 .text > p {
-    margin-top: 60%;
+    margin-top: 40%;
     margin-bottom: 100%;
     font-size: 20px;
 
 }
 
 .inputzin {
-    margin-top: 2%;
     margin-left: 20%;
     padding: 20px;
     font-size: 20px;
@@ -79,12 +78,64 @@ container{
 }
 
 .content{
+    padding: 20px;
     margin-top: 2%;
     background-color: #ffffff;
     margin-left: 0.5%;
     width: 99%;
     display: flex;
     justify-content: center;
+}
+
+.execucao{
+    margin-right: 1%;
+}
+
+.pedidoExec{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3%;
+    background-color: rgb(231, 231, 231);
+    padding: 20px;
+    width: 400px;
+    height: 175px;
+    border-radius: 5px;
+    box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.575);
+}
+
+.pedidoEntrega{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3%;
+    background-color: rgb(209, 209, 209);
+    padding: 20px;
+    width: 400px;
+    height: 175px;
+    border-radius: 5px;
+    box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.575);
+}
+
+.btEnviar{
+    border: none;
+    background-color: rgb(231, 231, 231);
+}
+
+.btEntrega{
+    border: none;
+    background-color: rgb(209, 209, 209);
+}
+
+
+.btEnviar img{
+    height: 80px;
+    width: 80px;
+    cursor: pointer;
+}
+
+.btEntrega img{
+    height: 60px;
+    width: 60px;
+    cursor: pointer;
 }
 
 .model{
