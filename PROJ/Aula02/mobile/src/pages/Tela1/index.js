@@ -1,30 +1,42 @@
-import { View, Text, Image, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, Image, StyleSheet, TextInput, TouchableOpacity, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useState } from 'react';
 
 const imgCad = require('../../../assets/add.svg');
 
-export default function Tela1({navigation}) {
-    const [desc, setDesc] = useState(""); 
+export default function Tela1({ navigation }) {
+    const [desc, setDesc] = useState("");
 
-    const Cadastrar = async () => {
-        try {
-            await AsyncStorage.setItem("Info", JSON.stringify({registro}))
-            navigation.navigate("Agenda")
-          } catch (err) {
-            console.log(err)
-          }
+    const alert = () => Alert.alert("SUCESSO!", "Tarefa cadastrada com Sucesso!");
+    const alert2 = () => Alert.alert("ERRO!", "Tarefa não cadastrada!");
+
+    const cadastrar = () => {
+        fetch("http://localhost:5000/tarefas/create", {
+            "method": "POST",
+            "headers": {
+                "Content-Type": "application/json"
+            },
+            "body": JSON.stringify(desc)
+        })
+            .then(res => { return res.json() })
+            .then(data => {
+                if (data != undefined) {
+                    alert();
+                } else {
+                    alert2()
+                }
+            })
     }
 
-    return(
+    return (
         <View style={style.container}>
-           <View style={style.content}>
+            <View style={style.content}>
                 <Text style={style.title}>Crie sua Tarefa</Text>
-                <TextInput style={style.inputzin} placeholder='Informe a descrição da sua tarefa' placeholderTextColor={"#00000077"} onChangeText={(value) => {setDesc(value)}} />
-           </View>
-            <TouchableOpacity style={style.btCad} onPress={() => {}}>
+                <TextInput style={style.inputzin} placeholder='Informe a descrição da sua tarefa' placeholderTextColor={"#00000077"} onChangeText={(value) => { setDesc(value) }} />
+            </View>
+            <TouchableOpacity style={style.btCad} onPress={cadastrar()}>
                 <Text style={style.textBt}>Criar Tarefa</Text>
-                <Image style={style.img} source={{uri:imgCad}} />
+                <Image style={style.img} source={{ uri: imgCad }} />
             </TouchableOpacity>
         </View>
     )
@@ -60,9 +72,9 @@ const style = StyleSheet.create({
         shadowOpacity: 0.58,
         shadowRadius: 16.00,
         elevation: 24,
-      },
+    },
     btCad: {
-        marginTop:'15%',
+        marginTop: '15%',
         backgroundColor: 'rgb(255, 213, 0)',
         borderRadius: '25px',
         alignItems: 'center',
