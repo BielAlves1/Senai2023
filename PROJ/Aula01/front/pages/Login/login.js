@@ -24,7 +24,7 @@ function login() {
                 window.location.href = "../Home/home.html";
             }
             else {
-                alert("Email ou Senha Incorretas")
+                alert("Credenciais inválidas!")
             }
         })
 };

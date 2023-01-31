@@ -20,7 +20,7 @@ function loadPedidos(){
                 cliente.innerHTML += pedido.cliente;
                 produto.innerHTML += pedido.produto;
                 endereco.innerHTML += pedido.endereco;
-                data.innerHTML += pedido.data;
+                data.innerHTML += pedido.data != null ? pedido.data.toLocaleString('pt-BR', { timeZone: 'UTC' }).replace("T", " ").split(".")[0] : pedido.data;
                 horario.innerHTML += pedido.hora_pedido;
                 btn.id = pedido.id_pedido;
 
@@ -42,7 +42,7 @@ function loadPedidos(){
                     cliente.innerHTML += pedido.cliente;
                     produto.innerHTML += pedido.produto;
                     endereco.innerHTML += pedido.endereco;
-                    data.innerHTML += pedido.data;
+                    data.innerHTML += pedido.data != null ? pedido.data.toLocaleString('pt-BR', { timeZone: 'UTC' }).replace("T", " ").split(".")[0] : pedido.data;
                     horario.innerHTML += pedido.hora_pedido;
                     horarioEntrega.innerHTML += pedido.hora_entrega;
                     btn.id = pedido.id_pedido;

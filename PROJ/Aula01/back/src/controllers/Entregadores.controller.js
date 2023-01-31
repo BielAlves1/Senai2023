@@ -8,7 +8,7 @@ const listarEntregadores = (req, res) => {
     con.query(Entregador.toRead(), (err, result) => {
         if (err == null) {
             res.status(200).json(result).end();
-        }else{
+        } else {
             res.status(400).json(err).end();
         }
     })
@@ -16,26 +16,30 @@ const listarEntregadores = (req, res) => {
 
 const login = (req, res) => {
     const user = req.body;
-    
+
     con.query(Entregador.toLogin(user), (err, result) => {
         if (err == null) {
-            if (user.email == result[0].email && user.senha == result[0].senha) {
-                let retorno = {
-                    "id_entregador": result[0].id_entregador,
-                    "nome": result[0].nome,
-                    "email": result[0].email,
-                    "veiculo": result[0].veiculo
-                }
-                jwt.sign(retorno, process.env.KEY, (err, token) => {
-                    if (err == null) {
-                        retorno["token"] = token;
-                        res.status(200).json(retorno).end();
-                    } else {
-                        res.status(404).json(err).end();
+            if (result.length > 0) {
+                if (user.email == result[0].email && user.senha == result[0].senha) {
+                    let retorno = {
+                        "id_entregador": result[0].id_entregador,
+                        "nome": result[0].nome,
+                        "email": result[0].email,
+                        "veiculo": result[0].veiculo
                     }
-                });
-            }else {
-                res.status(406).json(err).end();
+                    jwt.sign(retorno, process.env.KEY, (err, token) => {
+                        if (err == null) {
+                            retorno["token"] = token;
+                            res.status(200).json(retorno).end();
+                        } else {
+                            res.status(400).json(err).end();
+                        }
+                    });
+                } else {
+                    res.status(406).json(err).end();
+                }
+            }else{
+                res.status(404).end()    
             }
         } else {
             res.status(400).json(err).end()
@@ -47,7 +51,7 @@ const cadastrarEntregador = (req, res) => {
     con.query(Entregador.toCreate(req.body), (err, result) => {
         if (err == null) {
             res.status(201).json(req.body).end();
-        }else{
+        } else {
             res.status(400).json(err).end();
         }
     })

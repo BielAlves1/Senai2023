@@ -29,9 +29,10 @@ container{
 .form{
     margin-top: 1%;
     background-color: #ffffff;
-    margin-left: 0.5%;
-    width: 99%;
+    margin-left: 5%;
+    width: 90%;
     height: 450px;
+    box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.575);
     
 }
 
@@ -57,7 +58,11 @@ container{
     height: 20px;
     border-radius: 10px;
     color: #328ECB;
-    box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.25);
+    box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.575);
+}
+
+.inputzin::placeholder{
+    color: #328ECB;
 }
 
 #btnCad {
@@ -69,7 +74,7 @@ container{
     color: #ffffff;
     font-size: 20px;
     cursor: pointer;
-    box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.25);
+    box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.575);
 }
 
 #btnCad:hover {
@@ -81,10 +86,11 @@ container{
     padding: 20px;
     margin-top: 2%;
     background-color: #ffffff;
-    margin-left: 0.5%;
-    width: 99%;
+    margin-left: 5%;
+    width: 90%;
     display: flex;
     justify-content: center;
+    box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.575)
 }
 
 .execucao{
