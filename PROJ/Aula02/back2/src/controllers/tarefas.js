@@ -24,11 +24,14 @@ const read = async (req, res) => {
 }
 
 const update = async (req, res) => {
+    var info = req.body
+    info.hora_fim = new Date();
+
     const tarefa = await prisma.tarefa.update({
         where: { 
             id: Number(req.params.id)
         },
-        data: req.body
+        data: info
     });
 
     res.status(201).json(tarefa).end();

@@ -12,5 +12,5 @@ model tarefa {
   descricao String
   hora_inicio DateTime @default(now())
   hora_fim DateTime?
-  status String
+  status String @default("1")
 }
