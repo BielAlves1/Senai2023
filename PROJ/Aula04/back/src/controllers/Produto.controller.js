@@ -12,8 +12,10 @@ const create = async (req, res) => {
 const readAll = async (req, res) => {
     const produto = await prisma.produto.findMany({
         select: {
+            id_produto: true,
             nome: true,
-            valor: true
+            valor: true,
+            setor_id: true
         }
     });
     res.status(200).json(produto).end();
@@ -25,8 +27,10 @@ const read = async (req, res) => {
             id_produto: Number(req.params.id_produto)
         },
         select: {
+            id_produto: true,
             nome: true,
-            valor: true
+            valor: true,
+            setor_id: true
         }
     });
     res.status(200).json(produto).end();

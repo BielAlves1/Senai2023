@@ -10,7 +10,13 @@ const create = async (req, res) => {
 }
 
 const readAll = async (req, res) => {
-    const vendedor = await prisma.vendedor.findMany();
+    const vendedor = await prisma.vendedor.findMany({
+        select: {
+            nome: true,
+            salario: true,
+            setor_id: true
+        }
+    });
     res.status(200).json(vendedor).end();
 }
 
@@ -21,7 +27,8 @@ const read = async (req, res) => {
         },
         select: {
             nome: true,
-            salario: true
+            salario: true,
+            setor_id: true
         }
     });
     res.status(200).json(vendedor).end();

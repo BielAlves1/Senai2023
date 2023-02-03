@@ -7,12 +7,12 @@
     <link rel="stylesheet" href="style.css">
     <title>Home</title>
 </head>
-<body>
+<body onLoad="loadSetor()">
     <header>
         <nav>
-            <p>Loja</p>
+            <p>Logo da Loja</p>
             <ul>
-                <li><a href="#">Setores</a></li>
+                <li><a style="border-bottom: 2px solid white;" href="#">Setores</a></li>
                 <li><a href="#">Funcionários</a></li>
                 <li><a href="#">Produtos</a></li>
             </ul>
@@ -20,9 +20,12 @@
     </header>
     <main>
         <div class="container">
-            <div class="card-setor modelo ">
-                <p><span id="nome">Nome: </span>Construção</p>
-                <p><span id="comissao">Comissão: </span>5%</p>
+            <div class="card-setor model">
+                <div>
+                    <p id="nome"><span>Nome: </span></p>
+                    <p id="comissao"><span>Comissão: </span></p>
+                </div>
+                <button></button>
             </div>
         </div>
     </main>

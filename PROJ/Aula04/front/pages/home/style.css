@@ -87,3 +87,8 @@ main{
     font-size: 25px;
     font-weight: bold;
 }
+
+.model {
+    display: none;
+    visibility: hidden;
+}
