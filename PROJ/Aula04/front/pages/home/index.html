@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,10 +8,11 @@
     <link rel="stylesheet" href="style.css">
     <title>Home</title>
 </head>
+
 <body onLoad="loadSetor()">
     <header>
         <nav>
-            <p>Logo da Loja</p>
+            <img src="../../assets/logo.png" alt="">
             <ul>
                 <li><a style="border-bottom: 2px solid white;" href="#">Setores</a></li>
                 <li><a href="#">Funcionários</a></li>
@@ -19,6 +21,11 @@
         </nav>
     </header>
     <main>
+        <div class="form">
+            <input id="nome" type="text" placeholder="Nome do Setor:">
+            <input id="comissao" type="number" placeholder="Comissão do Setor:">
+            <button onClick="criarSetor()" id="cadastro">Cadastrar Setor</button>
+        </div>
         <div class="container">
             <div class="card-setor model">
                 <div>
@@ -31,4 +38,5 @@
     </main>
 </body>
 <script src="script.js"></script>
+
 </html>

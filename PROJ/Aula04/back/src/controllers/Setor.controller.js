@@ -3,6 +3,7 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 const create = async (req, res) => {
+    req.body.comissao = Number(req.body.comissao)
     const setor = await prisma.setor.create({
         data: req.body
     });
