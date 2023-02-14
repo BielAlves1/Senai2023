@@ -3,6 +3,7 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 const create = async (req, res) => {
+    req.body.salario = Number(req.body.salario)
     const vendedor = await prisma.vendedor.create({
         data: req.body
     });

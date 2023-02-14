@@ -3,6 +3,7 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 const create = async (req, res) => {
+    req.body.quantidade = Number(req.body.quantidade)
     const detalhe = await prisma.detalhe.create({
         data: req.body
     });

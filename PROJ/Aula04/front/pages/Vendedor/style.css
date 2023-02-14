@@ -1,0 +1,141 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    background-color: #ddd;
+}
+
+header{
+    width: 100%;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+    color: white;
+    height: 10vh;
+}
+
+nav > p {
+    margin-top: 2%;
+    font-size: 18pt;
+    padding: 5px 25px;
+}
+
+nav > img {
+    height: 90px;
+    width: 300px;
+    object-fit: cover;
+}
+
+ul{
+    display: flex;
+    list-style: none;
+}
+
+li{
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    
+}
+
+a{
+    text-decoration: none;
+    color: white;
+    font-size: 15pt;
+}
+
+a:hover{
+    border-bottom: 2px solid white;
+}
+
+main{
+    margin-top: 5%;
+}
+
+.form{
+    margin-left: 25%;
+    width: 40%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.inputs{
+    display: flex;
+    flex-direction: column;
+}
+
+.form input{
+    margin-left: 5%;
+    padding: 10px;
+    border: none;
+    width: 250px;
+    height: 60px;
+    border-bottom: 2px solid #000000;
+}
+
+.form button{
+    margin-left: 5%;
+    width: 400px;
+    height: 60px;
+    background: #000000;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    box-shadow: 5px 5px 5px rgb(48, 48, 48);
+}
+
+.form button:hover{
+    box-shadow: 5px 5px 5px #ffffff;
+    cursor: pointer;
+}
+
+.container{
+    margin-top: 2%;
+    margin-left: 10%;
+    margin-right: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 40px;
+    grid-row-gap: 40px;
+}
+
+.card-setor{
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.575);
+}
+
+.card-setor p{
+    font-size: 25px;
+}
+
+.card-setor span{
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.model {
+    display: none;
+    visibility: hidden;
+}

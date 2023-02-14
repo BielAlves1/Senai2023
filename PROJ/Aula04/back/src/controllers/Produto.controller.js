@@ -3,6 +3,7 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 const create = async (req, res) => {
+    req.body.valor = Number(req.body.valor)
     const produto = await prisma.produto.create({
         data: req.body
     });
@@ -15,7 +16,7 @@ const readAll = async (req, res) => {
             id_produto: true,
             nome: true,
             valor: true,
-            setor_id: true
+            produto_id: true
         }
     });
     res.status(200).json(produto).end();
@@ -30,7 +31,7 @@ const read = async (req, res) => {
             id_produto: true,
             nome: true,
             valor: true,
-            setor_id: true
+            produto_id: true
         }
     });
     res.status(200).json(produto).end();
