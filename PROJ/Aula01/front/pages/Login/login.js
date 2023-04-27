@@ -9,16 +9,16 @@ function login() {
     };
     options.body = JSON.stringify(credenciais);
     fetch("http://localhost:5000/entregadores/login", options)
-        .then(resp => resp.status)
-        .then(resp => {
-            if (resp == 200) {
+        .then(resp => {return resp.json()})
+        .then(data => {
+            if (data.erro === undefined) {
                 localStorage.setItem("info", JSON.stringify(
                     {
-                        "id_entregador": resp.id_user, 
-                        "nome": resp.id_role,
-                        "email":resp.nome_user, 
-                        "veiculo":resp.email, 
-                        "token":resp.token
+                        "id_entregador": data.id_user, 
+                        "nome": data.id_role,
+                        "email":data.nome_user, 
+                        "veiculo":data.email, 
+                        "token":data.token
                     }
                     ));
                 window.location.href = "../Home/home.html";
