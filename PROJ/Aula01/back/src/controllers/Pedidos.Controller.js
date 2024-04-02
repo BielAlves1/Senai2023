@@ -1,5 +1,5 @@
 const con = require('../dao/entregasDAO.js');
-const Pedido = require('../models/Pedidos.model');
+const Pedido = require('../models/Pedidos.model.js');
 
 
 const listarPedidos = (req, res) => {
@@ -33,34 +33,40 @@ const cadastrarPedido = (req, res) => {
 }
 
 const alterarPedidoHE = (req, res) => {
-    con.query(Pedido.toUpdateEntrega(req.body), (err, result) => {
-        if (err == null)
-            if (result.affectedRows > 0)
-                res.status(200).end();
-            else
+    const paramsAndBody = { ...req.params, ...req.body }; 
+    con.query(Pedido.toUpdateEntrega(paramsAndBody), (err, result) => {
+        if (err == null) {
+            if (result.rowCount > 0) {
+                res.status(200).json(paramsAndBody).end();
+            } else {
                 res.status(404).end();
-        else
+            }
+        } else {
             res.status(500).json(err).end();
+        }
     });
-}
+};
 
 const alterarPedidoHF = (req, res) => {
-    con.query(Pedido.toUpdateFim(req.body), (err, result) => {
-        if (err == null)
-            if (result.affectedRows > 0)
-                res.status(200).end();
-            else
+    const paramsAndBody = { ...req.params, ...req.body }; 
+    con.query(Pedido.toUpdateFim(paramsAndBody), (err, result) => {
+        if (err == null) {
+            if (result.rowCount > 0) {
+                res.status(200).json(paramsAndBody).end();
+            } else {
                 res.status(404).end();
-        else
+            }
+        } else {
             res.status(500).json(err).end();
+        }
     });
-}
+};
 
 const excluirPedido = (req, res) => {
     con.query(Pedido.toDelete(req.params), (err, result) => {
         if (err == null)
-            if (result.affectedRows > 0)
-                res.status(204).json(req.params).end();
+            if (result.rowCount > 0)
+                res.status(200).json(req.params).end();
             else
                 res.status(404).end();
         else

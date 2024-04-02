@@ -1,5 +1,7 @@
 const toCreate = (model) => {
-    return `INSERT INTO pedidos VALUES (default,'${model.cliente}','${model.endereco}', '${model.produto}', curdate(), curtime(), '${model.hora_entrega}', '${model.hora_fim}', '${model.id_entregador}')`;
+    const horaEntrega = model.hora_entrega ? `'${model.hora_entrega}'` : 'NULL';
+    const horaFim = model.hora_fim ? `'${model.hora_fim}'` : 'NULL';
+    return `INSERT INTO pedidos VALUES (default,'${model.cliente}','${model.endereco}', '${model.produto}', CURRENT_DATE, CURRENT_TIME, ${horaEntrega}, ${horaFim}, '${model.id_entregador}')`;
 }
 
 const toRead = () => {

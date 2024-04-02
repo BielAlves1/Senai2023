@@ -1,3 +1,5 @@
+const { stringify } = require("querystring");
+
 function login() {
     let credenciais = {
         "email": document.querySelector(".email").value,
@@ -5,9 +7,10 @@ function login() {
     }
     const options = {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' }
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({credenciais})
     };
-    options.body = JSON.stringify(credenciais);
+    
     fetch("http://localhost:5000/entregadores/login", options)
         .then(resp => {return resp.json()})
         .then(data => {

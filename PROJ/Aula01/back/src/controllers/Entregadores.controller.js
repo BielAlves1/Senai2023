@@ -19,13 +19,13 @@ const login = (req, res) => {
 
     con.query(Entregador.toLogin(user), (err, result) => {
         if (err == null) {
-            if (result.length > 0) {
-                if (user.email == result[0].email && user.senha == result[0].senha) {
+            if (result.rows.length > 0) {
+                if (user.email == result.rows[0].email && user.senha == result.rows[0].senha) {
                     let retorno = {
-                        "id_entregador": result[0].id_entregador,
-                        "nome": result[0].nome,
-                        "email": result[0].email,
-                        "veiculo": result[0].veiculo
+                        "id_entregador": result.rows[0].id_entregador,
+                        "nome": result.rows[0].nome,
+                        "email": result.rows[0].email,
+                        "veiculo": result.rows[0].veiculo
                     }
                     jwt.sign(retorno, process.env.KEY, (err, token) => {
                         if (err == null) {
@@ -38,14 +38,14 @@ const login = (req, res) => {
                 } else {
                     res.status(406).json(err).end();
                 }
-            }else{
-                res.status(404).end()    
+            } else {
+                res.status(404).end();
             }
         } else {
-            res.status(400).json(err).end()
+            res.status(400).json(err).end();
         }
-    })
-}
+    });
+};
 
 const cadastrarEntregador = (req, res) => {
     con.query(Entregador.toCreate(req.body), (err, result) => {
@@ -58,28 +58,35 @@ const cadastrarEntregador = (req, res) => {
 }
 
 const alterarEntregador = (req, res) => {
-    con.query(Entregador.toUpdate(req.body), (err, result) => {
-        if (err == null)
-            if (result.affectedRows > 0)
-                res.status(200).end();
-            else
+    const paramsAndBody = { ...req.params, ...req.body }; // Combina req.params e req.body
+    con.query(Entregador.toUpdate(paramsAndBody), (err, result) => {
+        if (err == null) {
+            if (result.rowCount > 0) {
+                res.status(200).json(paramsAndBody).end();
+            } else {
                 res.status(404).end();
-        else
+            }
+        } else {
             res.status(500).json(err).end();
+        }
     });
-}
+};
+
 
 const excluirEntregador = (req, res) => {
     con.query(Entregador.toDelete(req.params), (err, result) => {
-        if (err == null)
-            if (result.affectedRows > 0)
-                res.status(204).json(req.params).end();
-            else
+        if (err == null) {
+            if (result.rowCount > 0) {
+                res.status(200).json(req.params).end();
+            } else {
                 res.status(404).end();
-        else
+            }
+        } else {
             res.status(400).json(err).end();
-    })
-}
+        }
+    });
+};
+
 
 module.exports = {
     listarEntregadores,

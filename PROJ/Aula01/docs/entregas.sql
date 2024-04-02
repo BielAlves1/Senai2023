@@ -1,17 +1,21 @@
-DROP DATABASE IF EXISTS entregas;
-CREATE DATABASE entregas charset=UTF8 collate utf8_general_ci;
-USE entregas;
+-- DROP DATABASE IF EXISTS entregas;
+-- CREATE DATABASE entregas charset=UTF8 collate utf8_general_ci;
+-- No PostgreSQL, a criação do banco de dados normalmente é feita fora do script SQL.
+-- Você pode criar o banco de dados usando ferramentas como pgAdmin ou usando o comando CREATE DATABASE no console do PostgreSQL.
+
+-- USE entregas;
+-- No PostgreSQL, a mudança de banco de dados não é necessária dentro do script SQL.
 
 CREATE TABLE entregadores (
-    id_entregador INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(30) not null,
-    email VARCHAR(30) not null,
-    senha VARCHAR(30) not null,
-    veiculo VARCHAR(50) not null
+    id_entregador SERIAL PRIMARY KEY,
+    nome VARCHAR(30) NOT NULL,
+    email VARCHAR(30) NOT NULL,
+    senha VARCHAR(30) NOT NULL,
+    veiculo VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE pedidos(
-    id_pedido INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id_pedido SERIAL PRIMARY KEY,
     cliente VARCHAR(30) NOT NULL,
     endereco VARCHAR(100) NOT NULL,
     produto VARCHAR(30) NOT NULL,
@@ -19,31 +23,26 @@ CREATE TABLE pedidos(
     hora_pedido TIME NOT NULL,
     hora_entrega TIME,
     hora_fim TIME,
-    id_entregador INTEGER NOT NULL,
-    foreign key (id_entregador) references entregadores(id_entregador)
+    id_entregador INTEGER NOT NULL REFERENCES entregadores(id_entregador)
 );
 
-describe entregadores;
-describe pedidos;
+-- describe entregadores;
+-- No PostgreSQL, você pode usar \d entregadores;
 
-show tables;
+-- describe pedidos;
+-- No PostgreSQL, você pode usar \d pedidos;
 
-LOAD DATA INFILE 'D:/Senai2023/PROJ/Aula01/docs/dados/entregadores.csv'
--- 'D:/Gabriel Alves/Senai2023/PROJ/Aula01/docs/dados/entregadores.csv' <-- sala
--- 'D:/Senai2023/PROJ/Aula01/docs/dados/entregadores.csv' <-- casa
-INTO TABLE entregadores
-FIELDS TERMINATED BY ';'
-ENCLOSED BY '"'
-LINES TERMINATED BY '\r\n'
-IGNORE 1 ROWS;
+-- show tables;
+-- No PostgreSQL, você pode listar tabelas com \dt;
 
-select * from entregadores;
+COPY entregadores FROM 'C:/Users/USUARIO/Desktop/Gabriel/WorkSpace/Senai2023/PROJ/Aula01/docs/dados/entregadores.csv'
+DELIMITER ';'
+CSV HEADER;
 
-LOAD DATA INFILE 'D:/Senai2023/PROJ/Aula01/docs/dados/pedidos.csv'
-INTO TABLE pedidos
-FIELDS TERMINATED BY ';'
-ENCLOSED BY '"'
-LINES TERMINATED BY '\r\n'
-IGNORE 1 ROWS;
+SELECT * FROM entregadores;
 
-select * from pedidos;
+COPY pedidos FROM 'C:/Users/USUARIO/Desktop/Gabriel/WorkSpace/Senai2023/PROJ/Aula01/docs/dados/pedidos.csv'
+DELIMITER ';'
+CSV HEADER;
+
+SELECT * FROM pedidos;
